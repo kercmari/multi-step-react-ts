@@ -8,7 +8,7 @@ interface EmailTemplateProps {
   message: string;
 }
 
-const EmailTemplate: React.FC<EmailTemplateProps> = ({ name, message }) => (
+const EmailTemplate: React.FC<EmailTemplateProps> = ({ name }) => (
   <html>
     <body style={{ margin: 0, padding: 0, fontFamily: 'Arial, sans-serif' }}>
       <table width="100%" cellPadding="0" cellSpacing="0" border={0} style={{ maxWidth: '600px', margin: '0 auto' }}>
