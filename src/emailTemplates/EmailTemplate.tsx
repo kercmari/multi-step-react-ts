@@ -36,7 +36,9 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({ name }) => (
                   borderRadius: '25px',
                   cursor: 'pointer',
                   fontWeight: 'bold'
-                }}>
+                  
+                }}  onClick={() => {
+                  window.location.href = "https://multi-step-react-ts-uk2w.vercel.app/";}}>
                   Ingresa Aquí
                 </button>
               </div>

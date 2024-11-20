@@ -247,7 +247,7 @@ const QuestionStep: React.FC<QuestionStepProps> = ({
           src={
             currentStep === totalSteps
               ? "https://i.ibb.co/cYq3tL2/Group-178.png"
-              : "https://i.ibb.co/DQYMjJj/Group-174.png"
+              : "https://i.ibb.co/VWmMfrn/Dise-o-sin-t-tulo.png"
           }
           $mobileSrc={
             currentStep === totalSteps
