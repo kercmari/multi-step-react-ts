@@ -1,4 +1,4 @@
-// src/components/FloatingLabelInput.tsx
+
 import React from 'react';
 import styled from 'styled-components';
 

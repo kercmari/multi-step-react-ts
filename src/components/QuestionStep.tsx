@@ -1,4 +1,3 @@
-// src/components/QuestionStep.tsx
 import React from "react";
 import styled from "styled-components";
 import { NextButton, BackButton, OptionButton } from "./Button";

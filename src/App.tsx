@@ -1,4 +1,3 @@
-// src/App.tsx
 import React, { useState } from 'react';
 import QuestionStep from './components/QuestionStep';
 import ProgressBar from './components/ProgressBar';

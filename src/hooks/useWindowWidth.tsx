@@ -1,4 +1,4 @@
-// src/hooks/useWindowWidth.ts
+
 
 import { useState, useEffect } from 'react';
 
@@ -10,10 +10,10 @@ const useWindowWidth = () => {
       setWidth(window.innerWidth);
     };
 
-    // Agregar listener al montarse
+    
     window.addEventListener('resize', handleResize);
 
-    // Remover listener al desmontarse
+    
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 

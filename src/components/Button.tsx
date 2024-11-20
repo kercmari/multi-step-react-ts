@@ -1,4 +1,4 @@
-// Button.tsx
+
 import styled, { css } from 'styled-components';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import React from 'react';
@@ -81,7 +81,7 @@ export const Button = styled.button<ButtonProps>`
 interface OptionButtonProps extends ButtonProps {
   $maxWidth?: string;
   $maxWidthMobile?: string;
-  $hasCircle?: boolean; // Nueva prop para diferenciar tipos de botones
+  $hasCircle?: boolean; 
 }
 
 export const OptionButton = styled(Button)<OptionButtonProps>`
@@ -105,7 +105,7 @@ export const OptionButton = styled(Button)<OptionButtonProps>`
   }
 `;
 
-// Componentes NextButton y BackButton
+
 export const NextButton: React.FC<
   Omit<ButtonProps, 'ref'> & { currentStep?: number; totalSteps?: number }
 > = ({ children, currentStep, totalSteps, ...props }) => (
