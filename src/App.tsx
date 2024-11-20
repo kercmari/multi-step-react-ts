@@ -138,7 +138,7 @@ const App: React.FC = () => {
 
     const recipientEmail = 'example@example.com';
 
-    fetch('https://node-send-email-ssr-production.up.railway.app:3000/api/send-email', {
+    fetch('https://node-send-email-ssr-production.up.railway.app/api/send-email', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: recipientEmail, htmlContent }),

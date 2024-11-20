@@ -42,8 +42,9 @@ const StepIndicator = styled.div`
   }
 
   @media (max-width: 768px) {
-    top: 2rem;
+    top: 1rem;
     right: 1rem;
+    font-size: 1rem;
   }
 `;
 
@@ -55,10 +56,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ currentStep, totalSteps }) =>
       <Bar>
         <Progress progress={progress} />
       </Bar>
-      <StepIndicator>
-        {String(currentStep).padStart(2, '0')}{' '}
-        <span>| {String(totalSteps).padStart(2, '0')}</span>
-      </StepIndicator>
+      
     </ProgressContainer>
   );
 };

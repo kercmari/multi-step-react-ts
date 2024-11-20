@@ -22,7 +22,7 @@ const Header: React.FC = () => (
         width: '150px',
         height: '55px',
         marginTop: '120px',
-        marginLeft: '5rem',
+        marginLeft: '2rem',
       }}
     />
   </div>

@@ -89,6 +89,7 @@ export const OptionButton = styled(Button)<OptionButtonProps>`
   min-width: ${(props) => (props.$hasCircle ? '40%' :'30%')};
   display: flex;
   align-items: center;
+  text-align: ${(props) => (props.$hasCircle ? 'left' : 'center')};
   justify-content: ${(props) => (props.$hasCircle ? 'flex-start' : 'center')};
   max-width: ${(props) => props.$maxWidth || '50%'};
   flex: 1 1 ${(props) => props.$maxWidth || '50%'};
@@ -96,6 +97,11 @@ export const OptionButton = styled(Button)<OptionButtonProps>`
   @media (max-width: 768px) {
     max-width: ${(props) => props.$maxWidthMobile || '100%'};
     flex: 1 1 ${(props) => props.$maxWidthMobile || '100%'};
+  }
+
+  @media (max-width: 360px) {
+    
+    max-width: 100%;
   }
 `;
 

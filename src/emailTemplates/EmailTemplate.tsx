@@ -4,11 +4,11 @@ import Header from './Header';
 import Footer from './Footer';
 
 interface EmailTemplateProps {
-  name: string;
-  message: string;
+  name?: string;
+  message?: string;
 }
 
-const EmailTemplate: React.FC<EmailTemplateProps> = ({ name }) => (
+const EmailTemplate: React.FC<EmailTemplateProps> = ({ name="Aspirante"}) => (
   <html>
     <body style={{ margin: 0, padding: 0, fontFamily: 'Arial, sans-serif' }}>
       <table width="100%" cellPadding="0" cellSpacing="0" border={0} style={{ maxWidth: '600px', margin: '0 auto' }}>
@@ -28,19 +28,17 @@ const EmailTemplate: React.FC<EmailTemplateProps> = ({ name }) => (
                 Tu opinión es clave para ayudarnos a mejorar y adaptarnos a lo que realmente necesitas. Nos tomará solo unos minutos de tu tiempo.
               </p>
               <div style={{ textAlign: 'left', marginTop: '20px' }}>
-                <button style={{
+              <a href="https://multi-step-react-ts-uk2w.vercel.app/" style={{
+                 display: 'inline-block',
                   backgroundColor: '#333',
                   color: '#fff',
                   padding: '10px 20px',
-                  border: 'none',
+                  textDecoration: 'none',
                   borderRadius: '25px',
-                  cursor: 'pointer',
                   fontWeight: 'bold'
-                  
-                }}  onClick={() => {
-                  window.location.href = "https://multi-step-react-ts-uk2w.vercel.app/";}}>
+                }}>
                   Ingresa Aquí
-                </button>
+                </a>
               </div>
               <p style={{ color: '#555', marginTop: '20px' }}>
                 Agradecemos de antemano tu participación y confianza en Customer Scoops. ¡Gracias por tu tiempo y por contribuir a nuestra mejora continua!

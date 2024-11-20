@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { NextButton, BackButton, OptionButton } from "./Button";
 import FloatingLabelInput from "./FloatingLabelInput";
-
+import useWindowWidth from '../hooks/useWindowWidth.tsx';
 interface QuestionStepProps {
   question: string;
   options: string[];
@@ -21,12 +21,10 @@ const Container = styled.div`
   align-items: center;
   top: 0;
   width: 100vw;
- 
-
+  position: relative;
   @media (min-width: 768px) {
     flex-direction: row;
     height: 100vh;
-    
   }
 `;
 
@@ -37,9 +35,10 @@ const ImageContainer = styled.div`
   align-items: center;
   justify-content: center;
   order: 1;
-
+  position: relative;
+  z-index: 1;
   @media (min-width: 768px) {
-    width: 50%;
+    width: 45%;
     height: 100%;
     justify-content: flex-end;
     order: 2;
@@ -56,7 +55,7 @@ const StyledImage = styled.img<StyledImageProps>`
   height: 100%;
   object-fit: cover;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     content: url(${(props) => props.$mobileSrc || props.src});
 
     object-fit: cover;
@@ -73,12 +72,12 @@ const QuestionContainer = styled.div`
   margin: 1rem 2rem;
   width: 100%;
   order: 2;
-
+  position: relative;
+  z-index: 2;
   @media (min-width: 768px) {
-    width: 50%;
+    width: 55%;
     order: 1;
   }
-   
 `;
 
 const ContentContainer = styled.div`
@@ -95,9 +94,9 @@ const Paragraph = styled.p`
 
 const FinalParagraph = styled(Paragraph)`
   font-size: 2.5rem;
-   
+
   @media (max-width: 768px) {
-    font-size: 2.0rem;
+    font-size: 2rem;
   }
 `;
 
@@ -110,6 +109,12 @@ const OptionsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+
+  @media (max-width: 360px) {
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const OptionContent = styled.div`
@@ -155,7 +160,20 @@ const FormRow = styled.div`
     flex-direction: column;
   }
 `;
+const ButtonsContainer = styled.div`
+  display: flex;
+  width: 100%;
+  margin-top: 1rem;
+  gap: 10px;
 
+  @media (max-width: 768px) {
+    justify-content: space-between;
+  }
+
+  @media (min-width: 769px) {
+    justify-content: flex-start;
+  }
+`;
 const BackButtonContainer = styled.div`
   width: 20%;
   display: flex;
@@ -200,6 +218,26 @@ const LogoImage = styled.img`
     z-index: 1;
   }
 `;
+const StepIndicator = styled.div`
+  position: absolute;
+  top: 6rem;
+  right: 4rem;
+  font-size: 2rem;
+  color: #000;
+  text-align: right;
+  z-index: 20;
+
+  & > span {
+    font-size: 0.9rem;
+    color: #333;
+  }
+
+  @media (max-width: 768px) {
+    top: 2rem;
+    right: 1rem;
+    font-size: 1rem;
+  }
+`;
 
 const QuestionStep: React.FC<QuestionStepProps> = ({
   question,
@@ -213,7 +251,7 @@ const QuestionStep: React.FC<QuestionStepProps> = ({
 }) => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
   const [inputValue, setInputValue] = React.useState("");
-
+  const width = useWindowWidth();
   const handleOptionSelect = (option: string) => {
     setSelectedOptions((prevSelected) => {
       if (currentStep === 3) {
@@ -243,6 +281,10 @@ const QuestionStep: React.FC<QuestionStepProps> = ({
   return (
     <Container>
       <ImageContainer>
+        <StepIndicator>
+          {String(currentStep).padStart(2, "0")}{" "}
+          <span>| {String(totalSteps).padStart(2, "0")}</span>
+        </StepIndicator>
         <StyledImage
           src={
             currentStep === totalSteps
@@ -256,21 +298,14 @@ const QuestionStep: React.FC<QuestionStepProps> = ({
           }
           alt="Placeholder"
         />
+       {width < 768 && <LogoImage src="https://i.ibb.co/4p7TMkT/Group.png" alt="Logo" />}
       </ImageContainer>
       <QuestionContainer>
         <FormContentContainer>
           <FormRow>
-            {currentStep > 1 && currentStep < totalSteps && (
-              <BackButtonContainer>
-                <BackButton onClick={onBack} />
-              </BackButtonContainer>
-            )}
             <ContentContainer>
               <FormContent>
-                <LogoImage
-                  src="https://i.ibb.co/4p7TMkT/Group.png"
-                  alt="Logo"
-                />
+              {width >= 768 && <LogoImage src="https://i.ibb.co/4p7TMkT/Group.png" alt="Logo" />}
 
                 {paragraph && currentStep === totalSteps ? (
                   <FinalParagraph
@@ -317,27 +352,32 @@ const QuestionStep: React.FC<QuestionStepProps> = ({
                             <OptionCircle>
                               {String.fromCharCode(65 + index)}
                             </OptionCircle>
-                            <OptionText>{option}</OptionText>
+                            <>{option}</>
                           </OptionContent>
                         ) : (
-                          <OptionText>{option}</OptionText>
+                          <>{option}</>
                         )}
                       </OptionButton>
                     ))}
                   </OptionsContainer>
                 )}
               </FormContent>
-              <StyledNextButton
-                onClick={handleNextClick}
-                currentStep={currentStep}
-                totalSteps={totalSteps}
-              >
-                {currentStep === totalSteps
-                  ? "Finalizar"
-                  : currentStep === 1
-                  ? "Comenzar"
-                  : "Siguiente"}
-              </StyledNextButton>
+              <ButtonsContainer>
+                {currentStep > 1 && currentStep < totalSteps && (
+                  <BackButton onClick={onBack} />
+                )}
+                <StyledNextButton
+                  onClick={handleNextClick}
+                  currentStep={currentStep}
+                  totalSteps={totalSteps}
+                >
+                  {currentStep === totalSteps
+                    ? "Finalizar"
+                    : currentStep === 1
+                    ? "Comenzar"
+                    : "Siguiente"}
+                </StyledNextButton>
+              </ButtonsContainer>
             </ContentContainer>
           </FormRow>
         </FormContentContainer>
