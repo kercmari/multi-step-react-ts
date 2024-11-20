@@ -28,25 +28,25 @@ const Progress = styled.div<{ progress: number }>`
   transition: width 0.3s ease-in-out;
 `;
 
-const StepIndicator = styled.div`
-  position: fixed;
-  top: 6rem;
-  right: 4rem;
-  font-size: 2rem;
-  color: #000;
-  text-align: right;
+// const StepIndicator = styled.div`
+//   position: fixed;
+//   top: 6rem;
+//   right: 4rem;
+//   font-size: 2rem;
+//   color: #000;
+//   text-align: right;
 
-  & > span {
-    font-size: 0.9rem;
-    color: #333;
-  }
+//   & > span {
+//     font-size: 0.9rem;
+//     color: #333;
+//   }
 
-  @media (max-width: 768px) {
-    top: 1rem;
-    right: 1rem;
-    font-size: 1rem;
-  }
-`;
+//   @media (max-width: 768px) {
+//     top: 1rem;
+//     right: 1rem;
+//     font-size: 1rem;
+//   }
+// `;
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ currentStep, totalSteps }) => {
   const progress = (currentStep / totalSteps) * 100;
