@@ -122,10 +122,10 @@ const OptionContent = styled.div`
   width: 100%;
 `;
 
-const OptionText = styled.span`
-  flex: 1;
-  text-align: left;
-`;
+// const OptionText = styled.span`
+//   flex: 1;
+//   text-align: left;
+// `;
 
 const OptionCircle = styled.div`
   flex: 0 0 auto;
@@ -173,19 +173,19 @@ const ButtonsContainer = styled.div`
     justify-content: flex-start;
   }
 `;
-const BackButtonContainer = styled.div`
-  width: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  margin-top: auto;
+// const BackButtonContainer = styled.div`
+//   width: 20%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: flex-end;
+//   margin-top: auto;
 
-  @media (max-width: 768px) {
-    width: 100%;
-    justify-content: flex-start;
-    margin-bottom: 20px;
-  }
-`;
+//   @media (max-width: 768px) {
+//     width: 100%;
+//     justify-content: flex-start;
+//     margin-bottom: 20px;
+//   }
+// `;
 
 const FormContent = styled.div`
   margin-bottom: 1rem;
